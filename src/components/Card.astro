@@ -8,12 +8,34 @@ interface Props {
 }
 
 const { href, title, year, body, cover } = Astro.props;
+
+const albumSongs = [["Uninhabitable", "Temple of Higgs", "Late Stage Capitalism Blues"],
+					["Hooked", "Nothing", "Swamped"],
+					["Junk", "Fart", "Poooooop"],
+					["Ungh", "Tessst", "Dummmb"]
+]
+
+// foreach i of 
+
+// var songList = [];
+
+// albumSongs.forEach((list) => {
+// 	songList = list;
+// });
+
+// for (let i = 0; i < albumSongs.length; i++) {
+// 	var songList = albumSongs[i];
+// }
+
 ---
 
 <li class="link-card">
 	<a href={href}>
 		<h2>
 			<img src={cover}>
+				<ol class="song-list">
+					{albumSongs.map((song) => <li>{song}</li>)}
+				</ol>
 				<div class="title-container">
 					<div class="album-title">
 						{title}
@@ -53,16 +75,17 @@ const { href, title, year, body, cover } = Astro.props;
 	}
 	h2 {
 		margin: 0;
-		font-size: 1.25rem;
+		font-size: 1rem;
 		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 	}
-	.title-container {
+	.song-list {
 		float: right;
-		margin-left: 5px;
+		font-size: .5rem;
 	}
 	p {
 		margin-top: 0.5rem;
 		margin-bottom: 0;
+		font-size: .8rem;
 	}
 	.link-card:is(:hover, :focus-within) {
 		background-position: 0;
