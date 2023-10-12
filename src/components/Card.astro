@@ -5,27 +5,11 @@ interface Props {
 	body: string;
 	href: string;
 	cover: string;
+	songs: string;
 }
 
-const { href, title, year, body, cover } = Astro.props;
-
-const albumSongs = [["Uninhabitable", "Temple of Higgs", "Late Stage Capitalism Blues"],
-					["Hooked", "Nothing", "Swamped"],
-					["Junk", "Fart", "Poooooop"],
-					["Ungh", "Tessst", "Dummmb"]
-]
-
-// foreach i of 
-
-// var songList = [];
-
-// albumSongs.forEach((list) => {
-// 	songList = list;
-// });
-
-// for (let i = 0; i < albumSongs.length; i++) {
-// 	var songList = albumSongs[i];
-// }
+const { href, title, year, body, cover, songs } = Astro.props;
+let songsList = songs.split(",");
 
 ---
 
@@ -34,7 +18,7 @@ const albumSongs = [["Uninhabitable", "Temple of Higgs", "Late Stage Capitalism 
 		<h2>
 			<img src={cover}>
 				<ol class="song-list">
-					{albumSongs.map((song) => <li>{song}</li>)}
+					{songsList.map((song) => <li>{song}</li>)}
 				</ol>
 				<div class="title-container">
 					<div class="album-title">
