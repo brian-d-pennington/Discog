@@ -5,11 +5,11 @@ interface Props {
 	body: string;
 	href: string;
 	cover: string;
-	songs: string;
+	songs: Array<string>
 }
 
 const { href, title, year, body, cover, songs } = Astro.props;
-let songsList = songs.split(",");
+let songsList = songs.map((song) => { return song});
 
 ---
 
