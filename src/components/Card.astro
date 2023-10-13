@@ -14,7 +14,7 @@ let songsList = songs.map((song) => { return song});
 ---
 
 <li class="link-card">
-	<a href={href}>
+	<a href={href} download>
 		<h2>
 			<img src={cover}>
 				<ol class="song-list">
@@ -34,6 +34,15 @@ let songsList = songs.map((song) => { return song});
 		</p>
 	</a>
 </li>
+<script>
+	const albumCards = document.querySelectorAll('li.link-card');
+  
+	albumCards.forEach((albumCard) => {
+	  albumCard.addEventListener('dblclick', () => {
+		alert("double click triggered!");
+	  });
+	});
+  </script>
 <style>
 	.link-card {
 		list-style: none;

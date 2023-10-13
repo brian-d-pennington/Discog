@@ -19,6 +19,7 @@ import Card from '../components/Card.astro';
 			<strong>DONATE</strong> if you'd like to help offset hosting costs, otherwise enjoy!<br />
 			Physical copies of some of these titles can be found at <strong><a href="https://www.discogs.com/artist/1764669-Brian-Pennington">Discogs</a></strong>.
 		</p>
+		<h3>Double click on album tile to download in 312k mp3 format (unless noted otherwise).</h3>
 		<ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"
@@ -50,9 +51,35 @@ import Card from '../components/Card.astro';
 				year="2015"
 				body="Unfortunately short-lived band due to a move, this is everything the band recorded (in FLAC format)."
 				cover="src/covers/miniMall.jpeg"
+				songs={["This Rapport" , "Textile Hero" , "Swan Songs", "Tunnel Rat", "The Planck Length", "Flying Fortress", "Summer Chords", "Asshat", "Oceans"]}
+			/>
+			<Card
+				href="https://astro.build/chat/"
+				title="Fauxsrite"
+				year="2014"
+				body="Solo recording made during the 'polar vortex' freeze of early 2014: written and recorded within a 2 and a half week period."
+				cover="src/covers/miniMall.jpeg"
+				songs={["sssss" , "Temple of Hoes" , "Late zzzzuuuc Capitalism"]}
+			/>
+			<Card
+				href="https://astro.build/chat/"
+				title="Radiant Republic - Three Against Four"
+				year="2013"
+				body="2nd album from the project, and the first recorded with the live version of the band, originally released by Sick Room Records."
+				cover="src/covers/miniMall.jpeg"
 				songs={["sssss" , "Temple of Hoes" , "Late zzzzuuuc Capitalism"]}
 			/>
 		</ul>
+		<script>
+			// Find all buttons with the `alert` class on the page.
+			const albumCards = document.querySelectorAll('link-card');
+		  
+			albumCards.forEach((albumCard) => {
+			  albumCards.addEventListener('dblclick', () => {
+				console.log("double click triggered!");
+			  });
+			});
+		  </script>
 	</main>
 </Layout>
 
@@ -82,6 +109,10 @@ import Card from '../components/Card.astro';
 		line-height: 1;
 		text-align: center;
 		margin-bottom: 1em;
+	}
+	h3 {
+		font-size: .9rem;
+		text-align: center;
 	}
 	.text-gradient {
 		background-image: var(--accent-gradient);
