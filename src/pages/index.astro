@@ -19,7 +19,7 @@ import Card from '../components/Card.astro';
 			<strong>DONATE</strong> if you'd like to help offset hosting costs, otherwise enjoy!<br />
 			Physical copies of some of these titles can be found at <strong><a href="https://www.discogs.com/artist/1764669-Brian-Pennington">Discogs</a></strong>.
 		</p>
-		<h3>Double click on album tile to download in 312k mp3 format (unless noted otherwise).</h3>
+		<h3>Double click on album tile to download in 320k mp3 format (unless noted otherwise).</h3>
 		<ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"
@@ -58,28 +58,34 @@ import Card from '../components/Card.astro';
 				title="Fauxsrite"
 				year="2014"
 				body="Solo recording made during the 'polar vortex' freeze of early 2014: written and recorded within a 2 and a half week period."
-				cover="src/covers/miniMall.jpeg"
-				songs={["sssss" , "Temple of Hoes" , "Late zzzzuuuc Capitalism"]}
+				cover="src/covers/Fauxsrite.jpeg"
+				songs={["Always a Catch" , "I Want Out" , "Tiny Houses", "We'll Never Make It", "Burial Playgrounds", "Stairwell", "Painfully Slow", "No Ideas"]}
 			/>
 			<Card
 				href="https://astro.build/chat/"
 				title="Radiant Republic - Three Against Four"
 				year="2013"
 				body="2nd album from the project, and the first recorded with the live version of the band, originally released by Sick Room Records."
-				cover="src/covers/miniMall.jpeg"
-				songs={["sssss" , "Temple of Hoes" , "Late zzzzuuuc Capitalism"]}
+				cover="src/covers/3vs4.jpeg"
+				songs={["Someone Else's Golden Era" , "Second to Last" , "Care Enough to Care", "Given Time", "High Road", "Ghost Towns of the Future", "Lead the Way", "Variations IX", "Salvaging Act"]}
+			/>
+			<Card
+				href="https://astro.build/chat/"
+				title="Loex - Shanks"
+				year="2012"
+				body="Improvisational rock duo, recorded on a lovely June day in the Armitage Shanks recording/rehearsal room in Logan Square."
+				cover="src/covers/shanksImage.jpeg"
+				songs={["Always a Catch" , "I Want Out" , "Tiny Houses", "We'll Never Make It", "Burial Playgrounds", "Stairwell", "Painfully Slow", "No Ideas"]}
+			/>
+			<Card
+				href="https://astro.build/chat/"
+				title="Radiant Republic - Madness is Not Having Enough Time to Lose Your Mind"
+				year="2011"
+				body="Another solo effort after a few years away from the project, recorded with Kris Poulin after one of the biggest Chicago snow storms ever."
+				cover="src/covers/Madness.jpeg"
+				songs={["Someone Else's Golden Era" , "Second to Last" , "Care Enough to Care", "Given Time", "High Road", "Ghost Towns of the Future", "Lead the Way", "Variations IX", "Salvaging Act"]}
 			/>
 		</ul>
-		<script>
-			// Find all buttons with the `alert` class on the page.
-			const albumCards = document.querySelectorAll('link-card');
-		  
-			albumCards.forEach((albumCard) => {
-			  albumCards.addEventListener('dblclick', () => {
-				console.log("double click triggered!");
-			  });
-			});
-		  </script>
 	</main>
 </Layout>
 
