@@ -16,8 +16,12 @@ import Card from '../components/Card.astro';
 		<h1>Welcome to my<span class="text-gradient"> Discography</span> page.</h1>
 		<p class="about">
 			This is an effort to take direct ownership over my musical output.<br />
-			<strong>DONATE</strong> if you'd like to help offset hosting costs, otherwise enjoy!<br />
-			Physical copies of some of these titles can be found at <strong><a href="https://www.discogs.com/artist/1764669-Brian-Pennington">Discogs</a></strong>.
+ 			Donate if you'd like to help offset hosting costs, otherwise enjoy!</div><br />
+			Physical copies of some of these titles can be found at <strong><a href="https://www.discogs.com/artist/1764669-Brian-Pennington">Discogs</a></strong>.<br />
+			<a href="https://www.paypal.com/donate/?hosted_button_id=D7B5T5AZZY4VS">
+				<input class="paypal-button" type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="Donate">
+				<img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" > 
+			</a>
 		</p>
 		<h3>(albums in 320k mp3 format unless otherwise noted)</h3>
 		<ul role="list" class="link-card-grid">
@@ -102,6 +106,7 @@ import Card from '../components/Card.astro';
 				songs={["Littleton" , "Less is More, More or Less" , "Can't Build Rome", "Grandfather Clock", "Manute Bol", "More of Less is More", "F#", "Deaf Lumberjack"]}
 			/>
 		</ul>
+		<h6 class="stream-less">Stream less. 🌿</h6>
 	</main>
 </Layout>
 
@@ -136,6 +141,9 @@ import Card from '../components/Card.astro';
 		font-size: .9rem;
 		text-align: center;
 	}
+	.paypal-button {
+		padding-top: 1rem;
+	}
 	.text-gradient {
 		background-image: var(--accent-gradient);
 		-webkit-background-clip: text;
@@ -167,5 +175,8 @@ import Card from '../components/Card.astro';
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 2rem;
 		padding: 0;
+	}
+	.stream-less {
+		text-align: center;
 	}
 </style>
