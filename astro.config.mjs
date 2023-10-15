@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-    site: 'https://brian-d-pennington.github.io'
+    site: 'https://brian-d-pennington.github.io',
+    base: '/Discog'
 });
