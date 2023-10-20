@@ -13,11 +13,8 @@ const { } = Astro.props;
       </div>
     </div>
 
-    <audio src="music/Polo G – I Know.mp3" id="audio"></audio>
+    <audio src="src/songs/Lardo - SINKING - 02 Nothing.mp3" id="audio"></audio>
 
-    <!-- <div class="img-container">
-      <img src="images/Polo G – I Know.jpg" alt="music-cover" id="cover" />
-    </div> -->
     <div class="navigation">
       <button id="prev" class="action-btn">
         <i class="fas fa-backward"></i>
@@ -192,125 +189,126 @@ const { } = Astro.props;
   </style>
   <script>
     const musicContainer = document.getElementById('music-container');
-const playBtn = document.getElementById('play');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
+    const playBtn = document.getElementById('play');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
 
-const audio = document.getElementById('audio');
-const progress = document.getElementById('progress');
-const progressContainer = document.getElementById('progress-container');
-const title = document.getElementById('title');
-const cover = document.getElementById('cover');
-const currTime = document.querySelector('#currTime');
-const durTime = document.querySelector('#durTime');
+    const audio = document.getElementById('audio');
+    const progress = document.getElementById('progress');
+    const progressContainer = document.getElementById('progress-container');
+    const title = document.getElementById('title');
+    const currTime = document.querySelector('#currTime');
+    const durTime = document.querySelector('#durTime');
 
-// Song titles
-const songs = [
-    'Juice WRLD Ft Benny Blanco - Real Shit',
-    'Lil Baby, Lil Durk ft Rodwave - Rich Off Pain',
-    'Polo G – I Know'
-];
+    // Song titles
+    const songs = [
+        'Radiant Republic - Madness Is Not Having Enough Time to Lose Your Mind - 02 Broken in D',
+        'Brian Pennington - Trashscapes - 06 ',
+        'Lardo - GUNMETAL EYES - 03 These Kids',
+        "Brian Pennington - Fauxsrite - 04 We'll Never Make It",
+        'Radiant Republic - Three Against Four - 02 Second to Last',
+        'Lardo - SINKING - 02 Nothing'
+    ];
 
-// Keep track of song
-let songIndex = songs.length;
+    // Keep track of song
+    let songIndex = songs.length - 1;
 
-// Initially load song details into DOM
-loadSong(songs[songIndex]);
+    // Initially load song details into DOM
+    loadSong(songs[songIndex]);
 
-// Update song details
-function loadSong(song) {
-  title.innerText = song;
-//   audio.src = `music/${song}.mp3`;
-//   cover.src = `images/${song}.jpg`;
-}
+    // Update song details
+    function loadSong(song) {
+      title.innerText = song;
+      audio.src = `src/songs/${song}.mp3`;
+    }
 
-// Play song
-function playSong() {
-  musicContainer.classList.add('play');
-  playBtn.querySelector('i.fas').classList.remove('fa-play');
-  playBtn.querySelector('i.fas').classList.add('fa-pause');
+    // Play song
+    function playSong() {
+      musicContainer.classList.add('play');
+      playBtn.querySelector('i.fas').classList.remove('fa-play');
+      playBtn.querySelector('i.fas').classList.add('fa-pause');
 
-//   audio.play();
-}
+      audio.play();
+    }
 
-// Pause song
-function pauseSong() {
-  musicContainer.classList.remove('play');
-  playBtn.querySelector('i.fas').classList.add('fa-play');
-  playBtn.querySelector('i.fas').classList.remove('fa-pause');
+    // Pause song
+    function pauseSong() {
+      musicContainer.classList.remove('play');
+      playBtn.querySelector('i.fas').classList.add('fa-play');
+      playBtn.querySelector('i.fas').classList.remove('fa-pause');
 
-//   audio.pause();
-}
+      audio.pause();
+    }
 
-// Previous song
-function prevSong() {
-  songIndex--;
+    // Previous song
+    function prevSong() {
+      songIndex--;
 
-  if (songIndex < 0) {
-    songIndex = songs.length - 1;
-  }
+      if (songIndex < 0) {
+        songIndex = songs.length - 1;
+      }
 
-  loadSong(songs[songIndex]);
+      loadSong(songs[songIndex]);
 
-  playSong();
-}
+      playSong();
+    }
 
-// Next song
-function nextSong() {
-  songIndex++;
+    // Next song
+    function nextSong() {
+      songIndex++;
 
-  if (songIndex > songs.length - 1) {
-    songIndex = 0;
-  }
+      if (songIndex > songs.length - 1) {
+        songIndex = 0;
+      }
 
-  loadSong(songs[songIndex]);
+      loadSong(songs[songIndex]);
 
-  playSong();
-}
+      playSong();
+    }
 
-// Update progress bar
-function updateProgress(e) {
-  const { duration, currentTime } = e.srcElement;
-  const progressPercent = (currentTime / duration) * 100;
-  progress.style.width = `${progressPercent}%`;
-}
+    // Update progress bar
+    function updateProgress(e) {
+      const { duration, currentTime } = e.srcElement;
+      const progressPercent = (currentTime / duration) * 100;
+      progress.style.width = `${progressPercent}%`;
+    }
 
-// Set progress bar
-function setProgress(e) {
-  const width = this.clientWidth;
-  const clickX = e.offsetX;
-//   const duration = audio.duration;
+    // Set progress bar
+    function setProgress(e) {
+      const width = this.clientWidth;
+      const clickX = e.offsetX;
+    //   const duration = audio.duration;
 
-//   audio.currentTime = (clickX / width) * duration;
-}
+    //   audio.currentTime = (clickX / width) * duration;
+    }
 
 
-// Event listeners
-playBtn.addEventListener('click', () => {
-  const isPlaying = musicContainer.classList.contains('play');
+    // Event listeners
+    playBtn.addEventListener('click', () => {
+      const isPlaying = musicContainer.classList.contains('play');
 
-  if (isPlaying) {
-    pauseSong();
-  } else {
-    playSong();
-  }
-});
+      if (isPlaying) {
+        pauseSong();
+      } else {
+        playSong();
+      }
+    });
 
-// Change song
-prevBtn.addEventListener('click', prevSong);
-nextBtn.addEventListener('click', nextSong);
+    // Change song
+    prevBtn.addEventListener('click', prevSong);
+    nextBtn.addEventListener('click', nextSong);
 
-// Time/song update
-audio.addEventListener('timeupdate', updateProgress);
+    // Time/song update
+    audio.addEventListener('timeupdate', updateProgress);
 
-// Click on progress bar
-progressContainer.addEventListener('click', setProgress);
+    // Click on progress bar
+    progressContainer.addEventListener('click', setProgress);
 
-// Song ends
-audio.addEventListener('ended', nextSong);
+    // Song ends
+    audio.addEventListener('ended', nextSong);
 
-// Time of song
-// audio.addEventListener('timeupdate', DurTime);
+    // Time of song
+    // audio.addEventListener('timeupdate', DurTime);
   </script>
 
 
