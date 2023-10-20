@@ -29,163 +29,101 @@ const { } = Astro.props;
   </div>
 
   <style>
-    @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+      @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
-    * { 
-        box-sizing: border-box;
+      * { 
+          box-sizing: border-box;
+          border-radius: 10px;
+      }
+      
+    .music-container {
+      background-color: #efefef;
+      background-image: linear-gradient(
+        0deg,
+        #4b4a4c,
+        #979697
+      );
+      height: 70px;
+      box-shadow: inset -1px -1px 5px rgba(33,33,33, 0.5), inset 1px 1px 5px rgba(33,33,33,0.5); 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 30px;
+      position: relative;
+      margin: 80px 0 0 0;
+      z-index: 10;
     }
-    /* body {
-  background-image: linear-gradient(
-    0deg,
-    #8A2BE2,
-    #9370DB
-  );
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Lato', sans-serif;
-  margin: 0;
-} */
 
-/* styling the outer music container */
-.music-container {
-  background-color: #efefef;
-  background-image: linear-gradient(
-    0deg,
-    #8A2BE2,
-    #9370DB
-  );
-  height: 100px;
-  box-shadow: inset -1px -1px 5px rgba(33,33,33, 0.5), inset 1px 1px 5px rgba(33,33,33,0.5); 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 30px;
-  position: relative;
-  margin: 100px 0;
-  z-index: 10;
-}
+    .music-container.play .img-container img {
+      animation-play-state: running;
+    }
 
-/* .img-container {
-  position: relative;
-  width: 110px;
-}
+    .navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
 
-/* styling the image to look like a disc by placing a small circle in it*/
-/* .img-container::after {
-  content: '';
-  background-color: #fff;
-  border-radius: 50%;
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  transform: translate(-50%, 50%);
-} */ */
+    .action-btn {
+      border: 0;
+      border-radius: 20px;
+      background-color: transparent;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 10px;
+      margin: 0 20px;
+    }
 
-/* using animation to make the image rotate continiously when music is playing */
-.img-container img {
-  border-radius: 50%;
-  object-fit: cover;
-  height: 110px;
-  width: inherit;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  animation: rotate 3s linear infinite;
+    .action-btn.action-btn-big {
+      font-size: 30px;
+      outline: none;
+    }
 
-  animation-play-state: paused;
-}
+    .action-btn:focus {
+      outline: 0;
+    }
 
-/* making sure the image rotates only when the music is playing */
-.music-container.play .img-container img {
-  animation-play-state: running;
-}
+    .music-info {
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 15px 15px 0 0;
+      position: absolute;
+      top: 0;
+      left: 20px;
+      width: calc(100% - 40px);
+      text-align: center;
+      padding: 10px 10px 10px 10px;
+      opacity: 0;
+      transform: translateY(0%);
+      transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+      z-index: 0;
+    }
 
-/* creating the animation keyframe and setting the image to rotate 360 degrees continiously */
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
+    .music-container.play .music-info {
+      opacity: 1;
+      transform: translateY(-100%);
+    }
 
-  to {
-    transform: rotate(360deg);
-  }
-}
+    .music-info h4 {
+      margin: 0;
+    }
 
+    .progress-container {
+      background: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px 0;
+      height: 4px;
+      width: 100%;
+    }
 
-.navigation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-/* styling the navigation buttons */
-.action-btn {
-  border: 0;
-  border-radius: 20px;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 10px;
-  margin: 0 20px;
-}
-
-.action-btn.action-btn-big {
-  font-size: 30px;
-  outline: none;
-}
-
-.action-btn:focus {
-  outline: 0;
-}
-
-/* styling the music-info div by placing it under the music container */
-.music-info {
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 15px 15px 0 0;
-  position: absolute;
-  top: 0;
-  left: 20px;
-  width: calc(100% - 40px);
-  padding: 10px 10px 10px 150px;
-  opacity: 0;
-  transform: translateY(0%);
-  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
-  z-index: 0;
-}
-
-/* making the music info pop up when the music playing using the transform property*/
-.music-container.play .music-info {
-  opacity: 1;
-  transform: translateY(-100%);
-}
-
-.music-info h4 {
-  margin: 0;
-}
-
-/* styling the song progress container */
-.progress-container {
-  background: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 10px 0;
-  height: 4px;
-  width: 100%;
-}
-
-/* styling the actual progress bar and making it flow along with the song*/
-.progress {
-  background-color: #fe8daa;
-  border-radius: 5px;
-  height: 100%;
-  width: 0%;
-  transition: width 0.1s linear;
-}
+    .progress {
+      background-color: #fe8daa;
+      border-radius: 5px;
+      height: 100%;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
   </style>
   <script>
     const musicContainer = document.getElementById('music-container');
@@ -197,32 +135,27 @@ const { } = Astro.props;
     const progress = document.getElementById('progress');
     const progressContainer = document.getElementById('progress-container');
     const title = document.getElementById('title');
-    const currTime = document.querySelector('#currTime');
     const durTime = document.querySelector('#durTime');
 
-    // Song titles
     const songs = [
-        'Radiant Republic - Madness Is Not Having Enough Time to Lose Your Mind - 02 Broken in D',
-        'Brian Pennington - Trashscapes - 06 ',
-        'Lardo - GUNMETAL EYES - 03 These Kids',
+        "Radiant Republic - Madness Is Not Having Enough Time to Lose Your Mind - 02 Broken in D",
+        "MegaMaul - Asshat - 02 Asshat",
+        "Brian Pennington - Trashscapes - 06 ",
+        "Lardo - GUNMETAL EYES - 03 These Kids",
         "Brian Pennington - Fauxsrite - 04 We'll Never Make It",
-        'Radiant Republic - Three Against Four - 02 Second to Last',
-        'Lardo - SINKING - 02 Nothing'
+        "Radiant Republic - Three Against Four - 02 Second to Last",
+        "Lardo - SINKING - 02 Nothing"
     ];
 
-    // Keep track of song
     let songIndex = songs.length - 1;
 
-    // Initially load song details into DOM
     loadSong(songs[songIndex]);
 
-    // Update song details
     function loadSong(song) {
       title.innerText = song;
       audio.src = `src/songs/${song}.mp3`;
     }
 
-    // Play song
     function playSong() {
       musicContainer.classList.add('play');
       playBtn.querySelector('i.fas').classList.remove('fa-play');
@@ -231,7 +164,6 @@ const { } = Astro.props;
       audio.play();
     }
 
-    // Pause song
     function pauseSong() {
       musicContainer.classList.remove('play');
       playBtn.querySelector('i.fas').classList.add('fa-play');
@@ -240,7 +172,6 @@ const { } = Astro.props;
       audio.pause();
     }
 
-    // Previous song
     function prevSong() {
       songIndex--;
 
@@ -253,7 +184,6 @@ const { } = Astro.props;
       playSong();
     }
 
-    // Next song
     function nextSong() {
       songIndex++;
 
@@ -266,24 +196,20 @@ const { } = Astro.props;
       playSong();
     }
 
-    // Update progress bar
     function updateProgress(e) {
       const { duration, currentTime } = e.srcElement;
       const progressPercent = (currentTime / duration) * 100;
       progress.style.width = `${progressPercent}%`;
     }
 
-    // Set progress bar
     function setProgress(e) {
       const width = this.clientWidth;
       const clickX = e.offsetX;
-    //   const duration = audio.duration;
+      const duration = audio.duration;
 
-    //   audio.currentTime = (clickX / width) * duration;
+      audio.currentTime = (clickX / width) * duration;
     }
 
-
-    // Event listeners
     playBtn.addEventListener('click', () => {
       const isPlaying = musicContainer.classList.contains('play');
 
@@ -294,21 +220,16 @@ const { } = Astro.props;
       }
     });
 
-    // Change song
     prevBtn.addEventListener('click', prevSong);
     nextBtn.addEventListener('click', nextSong);
 
-    // Time/song update
     audio.addEventListener('timeupdate', updateProgress);
 
-    // Click on progress bar
     progressContainer.addEventListener('click', setProgress);
 
-    // Song ends
     audio.addEventListener('ended', nextSong);
 
-    // Time of song
-    // audio.addEventListener('timeupdate', DurTime);
+    audio.addEventListener('timeupdate', DurTime);
   </script>
 
 
